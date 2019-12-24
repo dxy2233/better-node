@@ -20,23 +20,13 @@ let cp = {
   // 打包&&提交svn
   uploadSvn: (adress1: string = dir1) => {
     shell.cd(adress1)
-    shell.cd('..')
-    // svn更新
-    console.log('snv更新:' + path.resolve('./'))
-    shell.exec('svn update')
-    // 有冲突时停止
-    if (shell.exec('svn status|grep ^C').length > 0) return
-    console.log('无冲突')
-    // 切换到code目录打包后提交
-    shell.cd('code')
     console.log('打包目录：' + path.resolve('./'))
     shell.exec('npm run build', () => {
       shell.cd('..')
-      shell.echo('无冲突')
       const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
-        prompt: '请输入commit\n'
+        prompt: '请输入commit: '
       })
       rl.prompt()
       rl.on('line', line => {
@@ -45,6 +35,7 @@ let cp = {
         // 删除文件
         let delData: any = shell.exec('svn status|grep ^!')
         delData = delData.stdout.split('\r\n')
+        delData = delData.filter(item => item)
         delData.forEach(item => {
           let delUrl = item.slice(1).trim()
           shell.exec(`svn delete ${delUrl}`)

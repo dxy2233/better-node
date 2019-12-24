@@ -57,6 +57,7 @@ let cp = {
         // 删除文件
         let delData: any = shell.exec('svn status|grep ^!')
         delData = delData.stdout.split('\r\n')
+        delData = delData.filter(item => item)
         delData.forEach(item => {
           let delUrl = item.slice(1).trim()
           shell.exec(`svn delete ${delUrl}`)
