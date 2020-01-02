@@ -20,6 +20,7 @@ let cp = {
   // 拷贝文件
   dir1ToDir2: (adress1: string = dir1, adress2: string = dir2) => {
     shell.cd(adress2)
+    shell.cd('..')
     shell.echo('更新svn：' + path.resolve('./'))
     // svn更新,有冲突停止
     shell.exec('svn update')
