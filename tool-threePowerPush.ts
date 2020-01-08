@@ -86,9 +86,9 @@ let cp = {
     })
     // 设置收件人信息
     let info = await transporter.sendMail({
-      from: '"三同步svn更新" <dxy5395@qq.com>',
+      from: '"三同步通管局版本" <dxy5395@qq.com>',
       to: '708968251@qq.com, 360483222@qq.com',
-      subject: '三同步省级项目',
+      subject: message,
       text: message,
       html: `<div>${message}</div>`
     })
