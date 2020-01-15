@@ -10,7 +10,7 @@ let baseText: any = {} // 全部文档
 
 // 获取文档
 const getData = async () => {
-  await superagent.get('http://192.168.0.108:8088/v2/api-docs').then(res => {
+  await superagent.get('http://192.168.0.108:8086/v2/api-docs').then(res => {
     baseText = JSON.parse(res.text) // tags:大标题  paths:路径基本信息  definitions:类的详细信息
     // 组装排列数据
     for (const i in baseText.paths) {
