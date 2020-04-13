@@ -5,12 +5,23 @@ import * as fs from 'fs'
 // const fs = require('fs')
 // const path = require('path')
 
-const apiPath = 'D:/october/src/api/' // 文件夹路径
+// const apiPath = 'D:/three/base/code/src/api/' // 文件夹路径
+// const apiUrl = 'http://192.168.0.153:8086/v2/api-docs'
+
+// const apiPath = 'D:/three/tgj/code/src/api/' // 文件夹路径
+// const apiUrl = 'http://192.168.0.153:8088/v2/api-docs'
+
+// const apiPath = 'D:/three/tgj_less/code/src/api/' // 文件夹路径
+// const apiUrl = 'http://192.168.0.153:8092/v2/api-docs'
+
+const apiPath = 'D:/engin-three/src/api/' // 文件夹路径
+const apiUrl = 'http://192.168.0.161:8086/v2/api-docs'
+
 let baseText: any = {} // 全部文档
 
 // 获取文档
 const getData = async () => {
-  await superagent.get('http://192.168.0.108:8086/v2/api-docs').then(res => {
+  await superagent.get(apiUrl).then((res) => {
     baseText = JSON.parse(res.text) // tags:大标题  paths:路径基本信息  definitions:类的详细信息
     // 组装排列数据
     for (const i in baseText.paths) {
@@ -20,7 +31,7 @@ const getData = async () => {
         if (baseText.paths[i].get) {
           res = { ...baseText.paths[i].get, url: i, method: 'get' }
           // get请求固定参数顺序
-          let temOrder = getOrder[res.url.slice(res.url.lastIndexOf('/') + 1)]
+          const temOrder = getOrder[res.url.slice(res.url.lastIndexOf('/') + 1)]
           if (temOrder) {
             res.parameters = res.parameters.sort((a, b) => {
               return temOrder.indexOf(a.name) - temOrder.indexOf(b.name)
@@ -30,7 +41,7 @@ const getData = async () => {
         // 组装post方法
         else res = { ...baseText.paths[i].post, url: i, method: 'post' }
         const searchIndex = baseText.tags.findIndex(
-          item => item.name === res.tags[0]
+          (item) => item.name === res.tags[0]
         )
         if (!baseText.tags[searchIndex].content)
           baseText.tags[searchIndex].content = []
@@ -42,33 +53,33 @@ const getData = async () => {
 
 // get方法参数排序
 const getOrder = {
-  getStatisticsByType: ['type', 'year', 'month', 'week']
+  getStatisticsByType: ['type', 'year', 'month', 'week'],
 }
 
 const create = async () => {
-  baseText.tags.forEach(item => {
+  baseText.tags.forEach((item) => {
     // 生成文件名
     let name = item.description.split(' ')
     name.pop()
     name[0] = name[0].toLowerCase()
     name = name.join('').replace()
     // 写入文件
-    fs.writeFile(`${apiPath}${name}.js`, textTemplate(item.content), err => {
+    fs.writeFile(`${apiPath}${name}.js`, textTemplate(item.content), (err) => {
       if (err) console.log(err)
     })
   })
 }
 
 // 文件模板
-const textTemplate = data => {
+const textTemplate = (data) => {
   let res = `import request from '@/utils/request'
 `
-  data.forEach(item => {
-    let apiName = item.url.slice(item.url.lastIndexOf('/') + 1) // 接口名称
+  data.forEach((item) => {
+    const apiName = item.url.slice(item.url.lastIndexOf('/') + 1) // 接口名称
     let parameter = '' // 参数
     let variable = '' // 传参变量
     if (item.parameters && item.method === 'get') {
-      parameter = item.parameters.map(ele => ele.name).join(', ')
+      parameter = item.parameters.map((ele) => ele.name).join(', ')
       variable = `params: { ${parameter} }`
     }
     if (item.parameters && item.method === 'post') {
