@@ -14,8 +14,9 @@ import * as fs from 'fs'
 // const apiPath = 'D:/three/tgj_less/code/src/api/' // 文件夹路径
 // const apiUrl = 'http://192.168.0.153:8092/v2/api-docs'
 
-const apiPath = 'D:/engin-three/src/api/' // 文件夹路径
-const apiUrl = 'http://192.168.0.161:8086/v2/api-docs'
+const apiPath = 'D:/engin-three/base/src/api/' // 文件夹路径
+// const apiUrl = 'http://192.168.0.161:8086/v2/api-docs'
+const apiUrl = 'http://192.168.0.156:8086/v2/api-docs'
 
 let baseText: any = {} // 全部文档
 

@@ -2,7 +2,7 @@ import * as shell from 'shelljs'
 import * as path from 'path'
 import * as fs from 'fs'
 // import * as readline from 'readline'
-// import * as nodemailer from 'nodemailer'
+import * as nodemailer from 'nodemailer'
 
 class Push {
   gitPath: string
@@ -46,10 +46,34 @@ class Push {
     })
   }
 
+  // email
+  static async sendEmail(): Promise<void> {
+    // console.log(this)
+    // 设置邮箱配置
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.qq.com',
+      port: 587, // 对应的端口号
+      secure: false,
+      auth: {
+        user: '691369338@qq.com',
+        pass: 'xojmmxnhqqwgbcgc',
+      },
+    })
+    // 设置收件人信息
+    const info = await transporter.sendMail({
+      from: '"svn更新<三同步-base>" <dxy5395@qq.com>',
+      to: '708968251@qq.com, 360483222@qq.com',
+      subject: '三同步base',
+      text: '三同步base',
+      html: `<div>三同步base</div>`,
+    })
+    console.log('Message sent: %s', info)
+  }
+
   run(): void {
     if (!this.testAdress()) return
     this.dir1ToDir2()
-    // cp.uploadSvn()
+    Push.sendEmail()
   }
 }
 
