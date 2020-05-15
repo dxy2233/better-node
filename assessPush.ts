@@ -61,11 +61,11 @@ class Push {
     });
     // 设置收件人信息
     const info = await transporter.sendMail({
-      from: '"svn更新<三同步-base>" <dxy5395@qq.com>',
+      from: '"svn更新<贝特绩效>" <dxy5395@qq.com>',
       to: '708968251@qq.com, 360483222@qq.com',
-      subject: '三同步base',
-      text: '三同步base',
-      html: `<div>三同步base</div>`,
+      subject: '贝特绩效',
+      text: '贝特绩效',
+      html: `<div>贝特绩效</div>`,
     });
     console.log('Message sent: %s', info);
   }
@@ -77,7 +77,7 @@ class Push {
   }
 }
 
-const dir1 = 'd:/engin-three/base'; // 工作地址
-const dir2 = 'd:/three/base/code'; // svn内code地址
+const dir1 = 'd:/engin-three/assess'; // 工作地址
+const dir2 = 'd:/three/assess/code'; // svn内code地址
 const pushbase = new Push(dir1, dir2);
 pushbase.run();

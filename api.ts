@@ -10,8 +10,8 @@ import * as fs from 'fs';
 // const apiPath = 'D:/three/tgj_less/code/src/api/' // 文件夹路径
 // const apiUrl = 'http://192.168.0.153:8092/v2/api-docs'
 
-const apiPath = 'D:/engin-three/base/src/api/'; // 文件夹路径
-const apiUrl = 'http://192.168.0.181:8086/v2/api-docs';
+const apiPath = 'D:/engin-three/assess/src/api/'; // 文件夹路径
+const apiUrl = 'http://192.168.0.181:8100/v2/api-docs';
 
 interface Swapi {
   tags: Array<{
