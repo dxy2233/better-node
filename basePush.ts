@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 // import * as readline from 'readline'
 import * as nodemailer from 'nodemailer';
+import * as env from './setting.js';
 
 class Push {
   gitPath: string;
@@ -56,7 +57,7 @@ class Push {
       secure: false,
       auth: {
         user: '691369338@qq.com',
-        pass: 'xojmmxnhqqwgbcgc',
+        pass: env.emaliPass,
       },
     });
     // 设置收件人信息
