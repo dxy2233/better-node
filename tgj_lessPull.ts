@@ -50,7 +50,7 @@ class Pull {
   }
 }
 
-const dir1 = 'd:/three/base/code'; // svn内code地址
-const dir2 = 'd:/engin-three/base'; // 工作地址
+const dir1 = 'd:/three/tgj_less/code'; // svn内code地址
+const dir2 = 'd:/engin-three/tgj_less'; // 工作地址
 const pullbase = new Pull(dir1, dir2);
 pullbase.run();

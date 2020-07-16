@@ -1,14 +1,17 @@
 import * as superagent from 'superagent'; // ajax
 import * as fs from 'fs';
 
-const apiPath = 'D:/engin-three/base/src/api/'; // 文件夹路径
-const apiUrl = 'http://192.168.0.179:8086/v2/api-docs';
+// const apiPath = 'D:/engin-three/base/src/api/'; // 文件夹路径
+// const apiUrl = 'http://192.168.0.179:8086/v2/api-docs';
 
-// const apiPath = 'D:/three/tgj/code/src/api/' // 文件夹路径
-// const apiUrl = 'http://192.168.0.153:8088/v2/api-docs'
+const apiPath = 'D:/engin-three/yys/src/api/'; // 文件夹路径
+const apiUrl = 'http://192.168.0.133:8090/v2/api-docs';
 
-// const apiPath = 'D:/three/tgj_less/code/src/api/' // 文件夹路径
-// const apiUrl = 'http://192.168.0.153:8092/v2/api-docs'
+// const apiPath = 'D:/engin-three/tgj/src/api/'; // 文件夹路径
+// const apiUrl = 'http://192.168.0.133:8088/v2/api-docs';
+
+// const apiPath = 'D:/engin-three/tgj_less/src/api/'; // 文件夹路径
+// const apiUrl = 'http://192.168.0.133:8092/v2/api-docs';
 
 // const apiPath = 'D:/engin-three/hole/src/api/'; // 文件夹路径
 // const apiUrl = 'http://192.168.0.181:8102/v2/api-docs';
