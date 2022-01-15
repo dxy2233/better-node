@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "nodemailer": "^6.4.6",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "superagent": "^5.2.2"
   },
   "devDependencies": {
